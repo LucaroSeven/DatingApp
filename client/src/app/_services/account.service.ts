@@ -16,6 +16,7 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   login(model: any){
+    model.username = model.username.toLowerCase();
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
